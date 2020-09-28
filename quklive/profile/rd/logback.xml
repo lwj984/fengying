@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<property name="APP_NAME" value="quklive" />
+	<!--日志文件的保存路径,首先查找系统属性-Dlog.dir,如果存在就使用其；否则，在当前目录下创建名为logs目录做日志存放的目录 -->
+	<property name="LOG_HOME" value="${log.dir:-logs}" />
+	<!-- 日志输出格式 -->
+	<property name="SIMPLE_PATTERN"
+		value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{80} - %msg%n" />
+	<property name="DETAIL_PATTERN"
+		value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%logger.%M:%L] - %msg%n" />
+
+	<contextName>${APP_NAME}</contextName>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">  
+            <pattern>${DETAIL_PATTERN}</pattern>
+        </encoder>
+	</appender>
+
+	<appender name="outputFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!--See http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+		<!--and http://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy -->
+		<!--for further documentation -->
+		<encoder>
+			<pattern>${SIMPLE_PATTERN}</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/output_%d{yyyy-MM-dd'.log'}</fileNamePattern>
+			<maxHistory>3</maxHistory>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="errorFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${DETAIL_PATTERN}</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">   
+	      <level>ERROR</level>   
+	      <onMatch>ACCEPT</onMatch>   
+	      <onMismatch>DENY</onMismatch>   
+	    </filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/error_%d{yyyy-MM-dd'.log'}</fileNamePattern>
+			<maxHistory>14</maxHistory>
+		</rollingPolicy>
+	</appender>
+	<logger name="datasource" level="DEBUG" additivity="false">
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="error" />
+	<!-- 日志级别 -->
+	<root level="INFO">
+		<appender-ref ref="console" />
+		<!-- <appender-ref ref="infoFile"></appender-ref> -->
+	</root>
+</configuration>   

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<name>quklive-demo</name>
+	<groupId>lwj.demo</groupId>
+	<artifactId>quklive</artifactId>
+	<version>0.0.1</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<dmp.version>2.5.5</dmp.version>
+		<!--web -->
+		<servlet.version>3.1.0</servlet.version>
+		<!--spring -->
+		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.boot.version>1.5.7.RELEASE</spring.boot.version>
+		<spring.boot.dubbo.version>1.0.0</spring.boot.dubbo.version>
+		<spring.boot.redis.version>1.4.7.RELEASE</spring.boot.redis.version>
+		<spring.boot.mybatis.version>1.3.1</spring.boot.mybatis.version>
+		<sprint.session.version>1.2.2.RELEASE</sprint.session.version>
+		<!--dubbo -->
+		<dubbo.version>2.6.0</dubbo.version>
+		<zookeeper.version>3.4.10</zookeeper.version>
+		<zkclient_version>0.10</zkclient_version>
+		<resteasy.version>3.0.19.Final</resteasy.version>
+		<httpclient.version>4.5.2</httpclient.version>
+		<jetty.version>6.1.26</jetty.version>
+		<validation.version>1.1.0.Final</validation.version>
+		<hibernation_validation.version>5.2.4.Final</hibernation_validation.version>
+		<!--databases -->
+		<commons.pool.version>1.6</commons.pool.version>
+		<druid.version>1.1.9</druid.version>
+		<aspectj.version>1.8.12</aspectj.version>
+		<influxdb.version>2.7</influxdb.version>
+		<mybatis.version>3.4.5</mybatis.version>
+		<!--web view -->
+		<freemarker.version>2.3.25-incubating</freemarker.version>
+		<!--json -->
+		<jackson.version>2.8.10</jackson.version>
+		<fastjson.version>1.2.28</fastjson.version>
+		<jsoup.version>1.6.2</jsoup.version>
+		<!--dom4j -->
+		<dom4j.version>1.6.1</dom4j.version>
+		<xstream.version>1.3.1</xstream.version>
+		<!--apollo -->
+		<apollo.version>0.8.0</apollo.version>
+		<!--RSA -->
+		<bcprov.version>1.55</bcprov.version>
+		<!--cache -->
+		<memcached.verison>2.2.0</memcached.verison>
+		<!--tools -->
+		<pagehelper.version>4.1.4</pagehelper.version>
+		<lombok.version>1.16.10</lombok.version>
+		<commos.fileupload.version>1.3.1</commos.fileupload.version>
+		<commons.lang.version>2.4</commons.lang.version>
+		<commons.collections.version>3.2.1</commons.collections.version>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<commons.httpclient.version>3.0</commons.httpclient.version>
+		<apache.http.version>4.5.1</apache.http.version>
+		<commons.lang3.version>3.4</commons.lang3.version>
+		<commons.codec.version>1.6</commons.codec.version>
+		<guava.version>21.0</guava.version>
+		<guice.version>4.1.0</guice.version>
+		<gson.version>2.8.2</gson.version>
+		<jxl.version>2.6.12</jxl.version>
+		<poi-ooxml.version>3.17</poi-ooxml.version>
+		<poi.version>3.15</poi.version>
+		<!--quartz -->
+		<quartz.version>2.2.2</quartz.version>
+		<!--log -->
+		<log4j.version>1.2.16</log4j.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<commons.logging.version>1.1.1</commons.logging.version>
+		<logback.version>1.2.3</logback.version>
+		<logback-ext-spring.version>0.1.4</logback-ext-spring.version>
+		<!--test -->
+		<junit.version>4.12</junit.version>
+		<!--zk -->
+		<zk.brave.version>4.0.4</zk.brave.version>
+		<zk.sender.urlconnection.version>0.6.12</zk.sender.urlconnection.version>
+		<okhttp.version>3.6.0</okhttp.version>
+		<springfox.version>2.6.1</springfox.version>
+		<commons-csv.version>1.4</commons-csv.version>
+		<javax.annotation.version>1.3.1</javax.annotation.version>
+		<zxing.version>3.3.0</zxing.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- fsm -->
+		<squirrel.version>0.3.8</squirrel.version>
+		<!--pinyin4j -->
+		<pinyin4j.version>2.5.0</pinyin4j.version>
+		<!-- Plugins Version -->
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<!-- 个推 Version -->
+		<getui.version>4.0.1.9</getui.version>
+		<!--spring-clout -->
+		<spring-cloud.version>1.3.0.RELEASE</spring-cloud.version>
+		<alipay.sdk.version>20170818173712</alipay.sdk.version>
+		<oss.version>2.8.3</oss.version>
+		<aliyun-java-sdk-core.version>3.0.6</aliyun-java-sdk-core.version>
+		<aliyun-java-sdk-mts.version>2.1.7</aliyun-java-sdk-mts.version>
+		<aliyun-java-sdk-sts.version>2.1.6</aliyun-java-sdk-sts.version>
+		<cas-client.version>1.5.0-GA</cas-client.version>
+		<!--jodd -->
+		<jodd-version>3.4.8</jodd-version>
+		<javax-mail.version>1.6.1</javax-mail.version>
+		<xmlbeans.version>2.3.0</xmlbeans.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>${spring.boot.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib-ext-spring</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!--lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<executable>true</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<!-- 是否替换资源中的属性 -->
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.* </include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>rd</id>
+			<properties>
+				<package.environment>rd</package.environment>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/profile/rd</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+
+		<profile>
+			<id>online</id>
+			<properties>
+				<package.environment>online</package.environment>
+			</properties>
+			<build>
+				<resources>
+					<resource>
+						<directory>${basedir}/src/main/online-resources</directory>
+					</resource>
+				</resources>
+			</build>
+		</profile>
+	</profiles>
+</project>

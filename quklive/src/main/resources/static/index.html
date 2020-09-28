@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title></title>
+    <style>
+        *{margin: 0px ;padding:0px;}
+        body{color:#333;font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;font-size: 15px;text-align: center;}
+    </style>
+</head>
+<body>
+<div class="main">
+    <div>
+        <input type="file" id="file" onchange="upload();"/>
+    </div>
+
+    <div id="process" style="width: 0;background-color: steelblue;"></div>
+    <div id="fail" style="display: none;"></div>
+    <div id="success" style="display: none;">
+        文件ID：<input type="text" id="fileId"/>
+        <span id="tip"></span>
+    </div>
+</div>
+<script type="text/javascript" src="dist/jquery.min.js"></script>
+<script type="text/javascript" src="dist/qukan-upload.js"></script>
+<script type="text/javascript">
+    //初始化，上传前请确认当前域名是否已通知趣看配置了跨域白名单
+    QukanUpload.init({appKey:"y5vxpw9gdkegeenk"});//appKey：趣看账号登录后可获得
+    function upload()//onchange事件触发
+    {
+      QukanUpload.upload(document.getElementById("file").files[0]);//进行上传文件，"file"为input dom ID
+    }
+    QukanUpload.uploadProgress = function(percent){//上传进度回调，返回上传百分比
+        $("#process").html("进度"+(percent*100)+"%");
+        $("#process").css({"width":(percent*100)+"%"});
+        $("#process").show();
+    };
+    QukanUpload.uploadSuccess = function(fileId){//上传成功回调，返回文件ID, 文件ID需要保存下来
+        $("#fileId").val(fileId);
+        $("#success").show();
+    };
+    QukanUpload.uploadFail = function(){//上传失败回调
+        $("#fail").html("上传失败");
+        $("#fail").show();
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <textarea id="content" style="height: 900px;width: 1800px;"></textarea>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script type="text/javascript">
+		var socket;
+		if (typeof (WebSocket) == "undefined") {
+			console.log("您的浏览器不支持WebSocket");
+		} else {
+			console.log("您的浏览器支持WebSocket");
+		}
+		
+		socket = new WebSocket("ws://localhost:5555/ws/1025255817533325312/20001040");
+		//打开事件  
+		socket.onopen = function() {
+			console.log("Socket 已打开");
+			//socket.send("这是来自客户端的消息" + location.href + new Date());  
+		};
+		//获得消息事件  
+		socket.onmessage = function(msg) {
+			console.log(msg.data);
+			//发现消息进入    调后台获取  
+			var old = $("#content").text();
+			$("#content").text(old + "\n" + msg.data);
+		};
+		//关闭事件  
+		socket.onclose = function() {
+			console.log("Socket已关闭并重连");
+			window.location.reload();
+		};
+		//发生了错误事件  
+		socket.onerror = function() {
+			alert("Socket发生了错误");
+		}
+		$(window).unload(function() {
+			socket.close();
+		});
+		
+		//每隔30秒钟发送一次心跳，避免websocket连接因超时而自动断开
+		window.setInterval(function(){ 
+		    socket.send("ping");
+		},30000);
+	</script>
+</body>
+</html>

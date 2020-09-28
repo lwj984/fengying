@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+             并发数<input id="count"></input>
+    <button id="open">开启</button>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+	<script type="text/javascript">
+	
+	$("#open").click(function(){
+		var i = $("#count").val();
+		if (i > 0) {
+			while (i > 0) {
+	           window.open('file:///D:/mygit/furry-broccoli/websocket-demo/client.html',i);
+	           i--;
+	        } 
+		}
+	});
+	</script>
+</body>
+</html>
