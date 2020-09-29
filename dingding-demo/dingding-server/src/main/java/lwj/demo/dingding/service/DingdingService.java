@@ -125,7 +125,7 @@ public class DingdingService {
         DingTalkClient dingTalkClient = new DefaultDingTalkClient(
                 "https://oapi.dingtalk.com/call_back/register_call_back");
         OapiCallBackRegisterCallBackRequest callBackRegisterRequest = new OapiCallBackRegisterCallBackRequest();
-        callBackRegisterRequest.setUrl("http://test001.vaiwan.com/eventreceive");
+        callBackRegisterRequest.setUrl("http://wanlongfei007.imdo.co/dingCallback");
         callBackRegisterRequest.setAesKey("P5pMzfmdJaAiFp5qKMod1eA5NSHCDhfGaAxNI4su1sJ");
         callBackRegisterRequest.setToken("123456");
         callBackRegisterRequest.setCallBackTag(Arrays.asList("bpms_task_change", "bpms_instance_change"));
