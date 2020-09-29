@@ -72,10 +72,14 @@ public class DingdingService {
 
         // 单行输入框
         OapiProcessinstanceCreateRequest.FormComponentValueVo vo1 = new OapiProcessinstanceCreateRequest.FormComponentValueVo();
-        vo1.setName("单行输入框示例");
-        vo1.setValue("单行输入框value");
+        vo1.setName("title");
+        vo1.setValue("我是个标题");
+        
+        OapiProcessinstanceCreateRequest.FormComponentValueVo vo2 = new OapiProcessinstanceCreateRequest.FormComponentValueVo();
+        vo2.setName("body");
+        vo2.setValue("我是内容");
 
-        // 多行输入框
+        /** 多行输入框
         OapiProcessinstanceCreateRequest.FormComponentValueVo vo2 = new OapiProcessinstanceCreateRequest.FormComponentValueVo();
         vo2.setName("多行输入框示例");
         vo2.setValue("多行输入框value");
@@ -102,13 +106,11 @@ public class DingdingService {
         // 明细
         OapiProcessinstanceCreateRequest.FormComponentValueVo vo4 = new OapiProcessinstanceCreateRequest.FormComponentValueVo();
         vo4.setName("明细示例");
-        vo4.setValue(JSON.toJSONString(Arrays.asList(Arrays.asList(ItemName1, ItemName2, ItemName3))));
+        vo4.setValue(JSON.toJSONString(Arrays.asList(Arrays.asList(ItemName1, ItemName2, ItemName3))));*/
 
         // 添加单行输入框、多行输入框、图片、明细、附件到表单
         formComponentValues.add(vo1);
         formComponentValues.add(vo2);
-        formComponentValues.add(vo3);
-        formComponentValues.add(vo4);
 
         createRequest.setFormComponentValues(formComponentValues);
         createRequest.setApprovers(userid2 + "," + userid3 + "," + userid4);
