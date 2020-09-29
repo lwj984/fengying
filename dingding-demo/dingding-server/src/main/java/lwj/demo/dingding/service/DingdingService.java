@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSON;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
+import com.dingtalk.api.request.OapiCallBackGetCallBackRequest;
+import com.dingtalk.api.request.OapiCallBackRegisterCallBackRequest;
 import com.dingtalk.api.request.OapiGettokenRequest;
 import com.dingtalk.api.request.OapiProcessinstanceCreateRequest;
 import com.dingtalk.api.request.OapiUserGetByMobileRequest;
+import com.dingtalk.api.response.OapiCallBackGetCallBackResponse;
+import com.dingtalk.api.response.OapiCallBackRegisterCallBackResponse;
 import com.dingtalk.api.response.OapiGettokenResponse;
 import com.dingtalk.api.response.OapiProcessinstanceCreateResponse;
 import com.dingtalk.api.response.OapiUserGetByMobileResponse;
@@ -24,15 +28,19 @@ public class DingdingService {
 
     private String appsecret = "Lmiu3KczT91gUduKdN3cJcsAYbD1zMa_fe_Gw1ioaa41KR7Q2tenMEtYVxOemTMl";
 
-    public String gettoken() throws ApiException {
+    // private String accessToken = "1c844484532131f5937c48fd8360c21d";
+
+    public String accessTokenGet() throws ApiException {
         DefaultDingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/gettoken");
         OapiGettokenRequest request = new OapiGettokenRequest();
         request.setAppkey(appkey);
         request.setAppsecret(appsecret);
         request.setHttpMethod("GET");
         OapiGettokenResponse response = client.execute(request);
-        String accessToken = response.getAccessToken();
+        return response.getAccessToken();
+    }
 
+    public String processinstanceCreate(String accessToken) throws ApiException {
         DingTalkClient dingTalkClient = new DefaultDingTalkClient("https://oapi.dingtalk.com/user/get_by_mobile");
         OapiUserGetByMobileRequest userRequest = new OapiUserGetByMobileRequest();
         userRequest.setMobile("15157181386");
@@ -54,7 +62,8 @@ public class DingdingService {
         execute = dingTalkClient.execute(userRequest, accessToken);
         String userid4 = execute.getUserid();
 
-        client = new DefaultDingTalkClient("https://oapi.dingtalk.com/topapi/processinstance/create");
+        DefaultDingTalkClient client = new DefaultDingTalkClient(
+                "https://oapi.dingtalk.com/topapi/processinstance/create");
         OapiProcessinstanceCreateRequest createRequest = new OapiProcessinstanceCreateRequest();
         createRequest.setAgentId(887157484L);
         createRequest.setProcessCode("PROC-BY6LI83V-4R8T1CHNUX58O0Z6C55M3-DTQJJGEJ-1");
@@ -110,6 +119,27 @@ public class DingdingService {
         OapiProcessinstanceCreateResponse createResponse = client.execute(createRequest, accessToken);
 
         return createResponse.getProcessInstanceId();
+    }
+
+    public String callBackRegister(String accessToken) throws ApiException {
+        DingTalkClient dingTalkClient = new DefaultDingTalkClient(
+                "https://oapi.dingtalk.com/call_back/register_call_back");
+        OapiCallBackRegisterCallBackRequest callBackRegisterRequest = new OapiCallBackRegisterCallBackRequest();
+        callBackRegisterRequest.setUrl("http://test001.vaiwan.com/eventreceive");
+        callBackRegisterRequest.setAesKey("P5pMzfmdJaAiFp5qKMod1eA5NSHCDhfGaAxNI4su1sJ");
+        callBackRegisterRequest.setToken("123456");
+        callBackRegisterRequest.setCallBackTag(Arrays.asList("bpms_task_change", "bpms_instance_change"));
+        OapiCallBackRegisterCallBackResponse callBackRegisterResponse = dingTalkClient.execute(callBackRegisterRequest,
+                accessToken);
+        return callBackRegisterResponse.getErrmsg();
+    }
+
+    public String callBackGet(String accessToken) throws ApiException {
+        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/call_back/get_call_back");
+        OapiCallBackGetCallBackRequest request = new OapiCallBackGetCallBackRequest();
+        request.setHttpMethod("GET");
+        OapiCallBackGetCallBackResponse response = client.execute(request, accessToken);
+        return response.getBody();
     }
 
 }
