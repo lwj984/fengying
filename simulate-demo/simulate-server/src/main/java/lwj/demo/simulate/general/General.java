@@ -42,20 +42,6 @@ public class General {
      */
     private Tactics thirdTactics;
 
-    /** 战斗时数据,有初始值  **/
-    /**
-     * 存活数
-     */
-    private int alive = 10000;
-    /**
-     * 死亡
-     */
-    private int death = 0;
-    /**
-     * 伤兵
-     */
-    private int wound = 0;
-
     public General(int force, int intellect, int command, int speed, int star, Tactics secondTactics,
             Tactics thirdTactics) {
         super();

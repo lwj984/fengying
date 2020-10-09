@@ -20,5 +20,5 @@ public class Battlefield {
      * 红方
      */
     private Lineup red;
-    
+
 }
