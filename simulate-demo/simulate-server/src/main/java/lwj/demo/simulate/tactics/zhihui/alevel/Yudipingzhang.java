@@ -1,7 +1,9 @@
 package lwj.demo.simulate.tactics.zhihui.alevel;
 
 import lombok.Data;
+import lwj.demo.simulate.enums.ExecutorEnum;
 import lwj.demo.simulate.enums.TacticsTypeEnum;
+import lwj.demo.simulate.fight.Battlefield;
 import lwj.demo.simulate.tactics.Tactics;
 
 /**
@@ -12,10 +14,16 @@ import lwj.demo.simulate.tactics.Tactics;
  * @since 1.0.0
  */
 @Data
-public class Yudipingzhang extends Tactics {
+public class Yudipingzhang implements Tactics {
 
     private String name = "御敌屏障";
 
     private TacticsTypeEnum tacticsType = TacticsTypeEnum.ZHIHUI;
+
+    @Override
+    public void prepare(ExecutorEnum executor, Battlefield battlefield) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

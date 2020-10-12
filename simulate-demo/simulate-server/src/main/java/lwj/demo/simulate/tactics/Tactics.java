@@ -1,14 +1,21 @@
 package lwj.demo.simulate.tactics;
 
-import lombok.Data;
+import lwj.demo.simulate.enums.ExecutorEnum;
+import lwj.demo.simulate.fight.Battlefield;
 
 /**
  * 战法
  * @author liuweijia
- * @date 2020年10月9日 下午1:49:14 
+ * @date 2020年10月12日 下午4:54:46 
  * @since 1.0.0
  */
-@Data
-public class Tactics {
+public interface Tactics {
+
+    /**
+     * 准备阶段
+     * @param executor
+     * @param battlefield
+     */
+    public void prepare(ExecutorEnum executor, Battlefield battlefield);
 
 }
