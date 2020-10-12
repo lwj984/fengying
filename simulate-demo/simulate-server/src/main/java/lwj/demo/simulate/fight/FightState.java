@@ -1,5 +1,9 @@
 package lwj.demo.simulate.fight;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import lombok.Data;
 import lwj.demo.simulate.enums.FunctionalBuffEnum;
 import lwj.demo.simulate.enums.FunctionalDeBuffEnum;
 
@@ -9,6 +13,7 @@ import lwj.demo.simulate.enums.FunctionalDeBuffEnum;
  * @date 2020年10月9日 下午4:18:44 
  * @since 1.0.0
  */
+@Data
 public class FightState {
 
     /**
@@ -27,11 +32,11 @@ public class FightState {
     /**
      * 功能性增益
      */
-    private FunctionalBuffEnum[] FunctionalBuffs;
+    private List<FunctionalBuffEnum> functionalBuffs = new ArrayList<>();
 
     /**
      * 功能性减益
      */
-    private FunctionalDeBuffEnum[] FunctionalDeBuffs;
+    private List<FunctionalDeBuffEnum> functionalDeBuffs = new ArrayList<>();
 
 }

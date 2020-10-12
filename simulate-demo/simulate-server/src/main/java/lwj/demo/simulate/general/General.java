@@ -1,6 +1,10 @@
 package lwj.demo.simulate.general;
 
+import java.util.List;
+
 import lombok.Data;
+import lwj.demo.simulate.enums.NationalityEnum;
+import lwj.demo.simulate.enums.TagEnum;
 import lwj.demo.simulate.tactics.Tactics;
 
 /**
@@ -12,6 +16,43 @@ import lwj.demo.simulate.tactics.Tactics;
  */
 @Data
 public class General {
+
+    /**
+     * 姓名
+     */
+    private String name;
+    /**
+     * 国籍
+     */
+    private NationalityEnum nationality;
+    /**
+     * 标签
+     */
+    private List<TagEnum> tags;
+    /**
+     * 骑兵适性（1S,2A,3B,4C,5D）
+     */
+    private int cavalry;
+    /**
+     * 盾兵适性（1S,2A,3B,4C,5D）
+     */
+    private int mauler;
+    /**
+     * 弓兵适性（1S,2A,3B,4C,5D）
+     */
+    private int bowman;
+    /**
+     * 枪兵适性（1S,2A,3B,4C,5D）
+     */
+    private int spearman;
+    /**
+     * 机械适性（1S,2A,3B,4C,5D）
+     */
+    private int machine;
+    /**
+     * 自带战法
+     */
+    private Tactics firstTactics;
 
     /**
      * 武力（界面值*100）
@@ -42,9 +83,18 @@ public class General {
      */
     private Tactics thirdTactics;
 
-    public General(int force, int intellect, int command, int speed, int star, Tactics secondTactics,
-            Tactics thirdTactics) {
+    public General(GeneralEnum generalEnum, int force, int intellect, int command, int speed, int star,
+            Tactics secondTactics, Tactics thirdTactics) {
         super();
+        this.name = generalEnum.getName();
+        this.nationality = generalEnum.getNationality();
+        this.tags = generalEnum.getTags();
+        this.cavalry = generalEnum.getCavalry();
+        this.mauler = generalEnum.getMauler();
+        this.bowman = generalEnum.getBowman();
+        this.spearman = generalEnum.getSpearman();
+        this.machine = generalEnum.getMachine();
+        this.firstTactics = generalEnum.getFirstTactics();
         this.force = force;
         this.intellect = intellect;
         this.command = command;

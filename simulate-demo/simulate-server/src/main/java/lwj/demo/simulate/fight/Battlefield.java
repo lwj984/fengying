@@ -21,4 +21,43 @@ public class Battlefield {
      */
     private Lineup red;
 
+    /**
+     * 蓝方主将战斗状态
+     */
+    private FightState blueMainState = new FightState();
+
+    /**
+     * 蓝方一副战斗状态
+     */
+    private FightState blueViceFirstState = new FightState();
+
+    /**
+     * 蓝方二副战斗状态
+     */
+    private FightState blueViceSecondState = new FightState();
+
+    /**
+     * 红方主将战斗状态
+     */
+    private FightState redMainState = new FightState();
+
+    /**
+     * 红方一副战斗状态
+     */
+    private FightState redViceFirstState = new FightState();
+
+    /**
+     * 红方二副战斗状态
+     */
+    private FightState redViceSecondState = new FightState();
+
+    public Battlefield() {
+        super();
+    }
+
+    public Battlefield(Lineup blue, Lineup red) {
+        super();
+        this.blue = blue;
+        this.red = red;
+    }
 }
