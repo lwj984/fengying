@@ -1,0 +1,25 @@
+package rules
+import java.util.Map;
+import lwj.demo.drools.rules.DroolsResult;
+    rule 'rule_1'
+    no-loop true
+	activation-group "test"
+	salience 10
+	when
+        $map : Map($map["status"]=="0");
+        $re : DroolsResult();
+	 then
+        modify($re) { setResultInt(1) };
+        modify($re) { setResultStr("高级礼物") };
+	end
+        rule 'rule_2'
+        no-loop true
+        activation-group "test"
+        salience 10
+    when
+        $map : Map($map["status"]=="1");
+        $re : DroolsResult();
+    then
+        modify($re) { setResultInt(2) };
+        modify($re) { setResultStr("无礼物") };
+end

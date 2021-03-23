@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+	<kbase name="demoRules" packages="demo.rules">
+		<ksession name="testBorrower01-rules" />
+	</kbase>
+	<kbase name="hbhRules" packages="hbh.rules">
+        <ksession name="hbh-rules" />
+    </kbase>
+</kmodule>

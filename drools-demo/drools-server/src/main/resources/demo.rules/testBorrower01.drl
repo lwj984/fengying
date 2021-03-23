@@ -1,0 +1,49 @@
+package demo.rules;
+import lwj.demo.drools.entity.Borrower
+import java.math.BigDecimal;
+
+// 根据月收入判断可授信额度
+// 月收入[0.5-1)万，可授信2万
+rule "testBorrower01-creditLine-2W"
+// agenda-group "testBorrower01"
+    when
+        $b:Borrower($b.getIncome() >= 5000.00 && $b.getIncome() <10000.00)
+    then
+        $b.setCreditLine(new BigDecimal(20000.00));
+end
+
+// 月收入[1-2)万，可授信5万
+rule "testBorrower01-creditLine-5W"
+// agenda-group "testBorrower01"
+    when
+        $b:Borrower($b.getIncome() >= 10000.00 && $b.getIncome() <20000.00)
+    then
+        $b.setCreditLine(new BigDecimal(50000.00));
+end
+
+// 月收入[2-3)万，可授信10万
+rule "testBorrower01-creditLine-10W"
+// agenda-group "testBorrower01"
+    when
+        $b:Borrower($b.getIncome() >= 20000.00 && $b.getIncome() <30000.00)
+    then
+        $b.setCreditLine(new BigDecimal(100000.00));
+end
+
+// 月收入[3-5)万，可授信30万
+rule "testBorrower01-creditLine-30W"
+// agenda-group "testBorrower01"
+    when
+        $b:Borrower($b.getIncome() >= 30000.00 && $b.getIncome() <50000.00)
+    then
+        $b.setCreditLine(new BigDecimal(300000.00));
+end
+
+// 月收入[5-）万，可授信50万
+rule "testBorrower01-creditLine-50W"
+// agenda-group "testBorrower01"
+    when
+        $b:Borrower($b.getIncome() >= 50000.00 )
+    then
+        $b.setCreditLine(new BigDecimal(500000.00));
+end

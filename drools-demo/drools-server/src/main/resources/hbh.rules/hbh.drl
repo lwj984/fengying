@@ -1,0 +1,93 @@
+package hbh.rules;
+import lwj.demo.drools.entity.User
+
+rule "hbh-married"
+    salience 100
+    activation-group "test"
+    when
+        $u:User($u.getMarried() != 1)
+    then
+        $u.setResult(0);
+end
+
+rule "hbh-jewelryWorks"
+    salience 100
+    activation-group "test"
+    when
+        $u:User($u.getJewelryWorks() == 1)
+    then
+        $u.setResult(0);
+end
+
+rule "hbh-arrivedNoOrder"
+    salience 100
+    activation-group "test"
+    when
+        $u:User($u.getArrivedNoOrder() == 1)
+    then
+        $u.setResult(0);
+end
+
+rule "hbh-yingMix"
+    salience 100
+    activation-group "test"
+    when
+        $u:User($u.getYingMix() == 1)
+    then
+        $u.setResult(0);
+end
+
+rule "hbh-age-gender"
+    salience 100
+    activation-group "test"
+    when
+        $u:User($u.getGender() == 1 && ($u.getAge() < 22 || $u.getAge() > 35)) or
+        $u:User($u.getGender() == 1 && $u.getAge() == null && ($u.getGender() == 2 && ($u.getAge() < 22 || $u.getAge() > 40)))
+    then
+        $u.setResult(0);
+end
+
+rule "hbh-condition1"
+    salience 50
+    activation-group "test"
+    when
+        $u:User($u.getCondition1() == 1)
+    then
+        $u.setResult(1);
+end
+
+rule "hbh-condition2"
+    salience 50
+    activation-group "test"
+    when
+        $u:User($u.getCondition2() == 1)
+    then
+        $u.setResult(1);
+end
+
+rule "hbh-condition3"
+    salience 50
+    activation-group "test"
+    when
+        $u:User($u.getCondition3() == 1)
+    then
+        $u.setResult(1);
+end
+
+rule "hbh-condition4"
+    salience 30
+    activation-group "test"
+    when
+        $u:User($u.getCondition4() == 1)
+    then
+        $u.setResult(2);
+end
+
+rule "hbh-condition5"
+    salience 30
+    activation-group "test"
+    when
+        $u:User($u.getCondition5() == 1)
+    then
+        $u.setResult(2);
+end
