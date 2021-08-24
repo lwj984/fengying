@@ -24,11 +24,11 @@ import com.taobao.api.ApiException;
 @Service
 public class DingdingService {
 
-    private String appkey = "ding8cysltgd0nfp39lc";
+    private String appkey = "ding8cys|---|ltgd0nfp39lc";
 
-    private String appsecret = "Lmiu3KczT91gUduKdN3cJcsAYbD1zMa_fe_Gw1ioaa41KR7Q2tenMEtYVxOemTMl";
+    private String appsecret = "Lmiu3KczT91gUduKdN3cJcsA|---|YbD1zMa_fe_Gw1ioaa41KR7Q2tenMEtYVxOemTMl";
 
-    // private String accessToken = "1c844484532131f5937c48fd8360c21d";
+    // private String accessToken = "1c844484532131|---|f5937c48fd8360c21d";
 
     public String accessTokenGet() throws ApiException {
         DefaultDingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/gettoken");
